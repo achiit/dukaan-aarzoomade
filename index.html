@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AarzooMade | Custom Order Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6B3F7D;
+    --primary-light: #9B72AA;
+    --accent: #F4A2B8;
+    --bg-cream: #FDFBF9;
+    --card-bg: #FFFFFF;
+    --text-dark: #2D232E;
+    --text-muted: #665C68;
+    --whatsapp: #25D366;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  html, body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.5;
+    overflow-y: auto !important;
+  }
+
+  .landing-container {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #EFE4F4;
+    color: var(--primary);
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  .tagline {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .funnel-card {
+    background: var(--card-bg);
+    border: 1.5px solid #E5D4EC;
+    border-radius: 18px;
+    padding: 20px 16px;
+    box-shadow: 0 8px 24px rgba(107, 63, 125, 0.08);
+    text-align: left;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-dark);
+  }
+
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #D8C8E0;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    background: #fff;
+  }
+
+  .btn-whatsapp {
+    display: block;
+    width: 100%;
+    background-color: var(--whatsapp);
+    color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    margin-top: 10px;
+  }
+
+  .trust-footer {
+    margin-top: 20px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="landing-container">
+    <span class="badge">🎀 AarzooMade Studio • Powai, Mumbai</span>
+    <h1>Start Your Custom Order</h1>
+    <p class="tagline">Fill out your details below & get instant confirmation on WhatsApp!</p>
+
+    <div class="funnel-card">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" id="custName" placeholder="e.g. Priya Sharma">
+      </div>
+
+      <div class="form-group">
+        <label>Select Category *</label>
+        <select id="giftType">
+          <option value="Customized Gift Hamper">🎁 Customized Gift Hamper (₹499+)</option>
+          <option value="Kids School Name Labels">📚 Kids Waterproof School Name Labels (₹299+)</option>
+          <option value="Bulk Birthday Return Gifts">🎉 Bulk Birthday Return Gifts (Custom)</option>
+          <option value="Activity Workbook / Learning Kit">📖 Kids Activity Workbook (₹349+)</option>
+          <option value="Wedding / Festive Favors">💌 Wedding & Festive Favors</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Quantity & Approx Budget *</label>
+        <input type="text" id="qtyBudget" placeholder="e.g. 15 boxes, ₹400 each">
+      </div>
+
+      <div class="form-group">
+        <label>Required Date & Area (Mumbai)</label>
+        <input type="text" id="eventDate" placeholder="e.g. 25 Oct, Powai">
+      </div>
+
+      <div class="form-group">
+        <label>Theme or Personalization Details</label>
+        <textarea id="themeNotes" rows="2" placeholder="e.g. Unicorn theme for 6-year-old girl, include name tags..."></textarea>
+      </div>
+
+      <button onclick="sendToWhatsApp()" class="btn-whatsapp">
+        🚀 Send Requirement on WhatsApp
+      </button>
+    </div>
+
+    <div class="trust-footer">
+      ⭐ Rated 5.0 by Happy Customers in Mumbai • Secure WhatsApp Direct Chat
+    </div>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      var name = document.getElementById('custName').value.trim();
+      if(!name) {
+        alert("Please enter your name!");
+        document.getElementById('custName').focus();
+        return;
+      }
+      var type = document.getElementById('giftType').value;
+      var qty = document.getElementById('qtyBudget').value || 'Not specified';
+      var date = document.getElementById('eventDate').value || 'Flexible';
+      var notes = document.getElementById('themeNotes').value || 'None';
+      
+      var msg = "Hi AarzooMade! ✨%0A%0AI want to place an order from your Landing Page:%0A" +
+                "👤 *Name:* " + encodeURIComponent(name) + "%0A" +
+                "🎁 *Category:* " + encodeURIComponent(type) + "%0A" +
+                "📦 *Qty & Budget:* " + encodeURIComponent(qty) + "%0A" +
+                "📅 *Date & Area:* " + encodeURIComponent(date) + "%0A" +
+                "🎨 *Theme/Details:* " + encodeURIComponent(notes);
+      
+      window.open("https://wa.me/918424936858?text=" + msg, "_blank");
+    }
+  </script>
+</body>
+</html>
